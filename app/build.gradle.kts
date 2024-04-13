@@ -7,6 +7,10 @@ android {
     namespace = "com.example.hobbyapp"
     compileSdk = 34
 
+    buildFeatures{
+        viewBinding = true
+    }
+
     defaultConfig {
         applicationId = "com.example.hobbyapp"
         minSdk = 24
