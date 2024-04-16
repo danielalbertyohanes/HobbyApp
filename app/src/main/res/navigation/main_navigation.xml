@@ -7,26 +7,54 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.hobbyapp.view.LoginFragment"
-        android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        android:label="Login Page"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/actionMainFragment"
+            app:destination="@id/itemHome" />
+        <action
+            android:id="@+id/actionRegisterFragment"
+            app:destination="@id/registerFragment" />
+    </fragment>
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.hobbyapp.view.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" />
+        android:label="Register Page"
+        tools:layout="@layout/fragment_register">
+        <action
+            android:id="@+id/actionLoginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/mainFragment"
+        android:id="@+id/itemHome"
         android:name="com.example.hobbyapp.view.MainFragment"
-        android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        android:label="Main Page"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/actionNewsDatailFragment"
+            app:destination="@id/newsDetailFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/historyFragment"
+        android:id="@+id/itemHistory"
         android:name="com.example.hobbyapp.view.HistoryFragment"
-        android:label="fragment_history"
+        android:label="History Page"
         tools:layout="@layout/fragment_history" />
     <fragment
-        android:id="@+id/profileFragment"
+        android:id="@+id/itemProfile"
         android:name="com.example.hobbyapp.view.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        android:label="Profile Page"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/actionLoginFragment2"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newsDetailFragment"
+        android:name="com.example.hobbyapp.view.NewsDetailFragment"
+        android:label="Detail Page"
+        tools:layout="@layout/fragment_news_detail">
+        <argument
+            android:name="newsId"
+            app:argType="string" />
+    </fragment>
 </navigation>

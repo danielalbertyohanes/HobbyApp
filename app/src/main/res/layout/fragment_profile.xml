@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView3"
+            android:id="@+id/cardViewName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,19 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <Button
-                    android:id="@+id/btnUpdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_margin="10dp"
-                    android:layout_marginEnd="12dp"
-                    android:text="UPDATE"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:layout_editor_absoluteY="161dp" />
-
                 <EditText
-                    android:id="@+id/txtPassword"
+                    android:id="@+id/txtFirstName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -60,32 +49,60 @@
                     android:inputType="text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtFirstName" />
+
+                <Button
+                    android:id="@+id/btnUpdateName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="UPDATE"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLastName" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView3">
+            app:layout_constraintTop_toBottomOf="@+id/cardViewName">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
+                <EditText
+                    android:id="@+id/txtConfPass"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="15dp"
+                    android:ems="10"
+                    android:hint="Confirm Password"
+                    android:inputType="text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
                 <Button
-                    android:id="@+id/btnUpdate"
+                    android:id="@+id/btnUpdatePass"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_margin="10dp"
-                    android:layout_marginEnd="16dp"
-                    android:text="UPDATE"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="12dp"
+                    android:text="Update"
                     app:layout_constraintEnd_toEndOf="parent"
-                    tools:layout_editor_absoluteY="93dp" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtConfPass" />
 
                 <EditText
                     android:id="@+id/txtPassword"
@@ -95,7 +112,7 @@
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="15dp"
                     android:ems="10"
-                    android:hint="First Name"
+                    android:hint="Password"
                     android:inputType="text"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -112,8 +129,11 @@
             android:layout_gravity="right"
             android:layout_margin="10dp"
             android:text="LOG OUT"
-            tools:layout_editor_absoluteX="156dp"
-            tools:layout_editor_absoluteY="521dp" />
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardViewPassword" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

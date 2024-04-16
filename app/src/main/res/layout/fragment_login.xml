@@ -29,10 +29,10 @@
             android:id="@+id/txtPassword"
             android:layout_width="280dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="25dp"
             android:ems="10"
             android:hint="Password"
-            android:inputType="textPassword"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtUsername" />
@@ -42,26 +42,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="56dp"
             android:background="@android:color/transparent"
             android:text="CREATE ACCOUNT"
             android:textColor="@color/purple_500"
             android:textSize="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            tools:ignore="TextSizeCheck" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="176dp"
             android:layout_marginTop="84dp"
             android:text="new here ?"
             android:textColor="@color/black"
             android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnSignin" />
 
@@ -83,7 +82,7 @@
             android:id="@+id/btnSignin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="64dp"
             android:text="SIGN IN"
             app:layout_constraintEnd_toEndOf="parent"
