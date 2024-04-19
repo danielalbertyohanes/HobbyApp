@@ -72,14 +72,15 @@ class NewsDetailFragment : Fragment() {
         viewModel.newsLD.value?.let { newsData ->
             val contentPages = newsData.content?.split("\n")
             if (currentPage == 0) {
-                with(binding) {
-                    txtTitle.text = newsData.title
-                    txtAuthor.text = "@"+newsData.author
-                    txtSubjudul.text = newsData.sub_title
-                    imageView.loadImage(newsData.photo_url, progressBar)
-                }
+                binding.txtTitle.text = newsData.title
+                binding.txtAuthor.text = "@"+newsData.author
+                binding.txtSubjudul.text = newsData.sub_title
+                binding.imageView.loadImage(newsData.photo_url,binding.progressBar)
+                binding.txtContent.text = contentPages?.get(currentPage)
+            } else{
+                binding.txtContent.text = contentPages?.get(currentPage)
             }
-            binding.txtContent.text = contentPages?.get(currentPage)
+
         }
     }
 }

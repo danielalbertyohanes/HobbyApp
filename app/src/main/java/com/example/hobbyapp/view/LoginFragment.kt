@@ -14,10 +14,11 @@
     import androidx.navigation.Navigation
     import com.example.hobbyapp.databinding.FragmentLoginBinding
     import com.example.hobbyapp.viewmodel.LoginViewModel
+    import com.example.hobbyapp.viewmodel.UpdateViewModel
 
     class LoginFragment : Fragment() {
         private lateinit var binding: FragmentLoginBinding
-        private val viewModel: LoginViewModel by viewModels()
+        private lateinit var  viewModel: LoginViewModel
         private lateinit var sharedPreferences: SharedPreferences
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -29,6 +30,9 @@
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
+
+            viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
 
             binding.btnSignin.setOnClickListener{
                 var userName = binding.txtUsername.text.toString()

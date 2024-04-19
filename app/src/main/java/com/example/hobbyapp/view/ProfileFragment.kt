@@ -2,11 +2,14 @@ package com.example.hobbyapp.view
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.hobbyapp.R
 import com.example.hobbyapp.databinding.FragmentProfileBinding
@@ -19,6 +22,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: UpdateViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +33,10 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Inisialisasi viewModel
+        viewModel = ViewModelProvider(this).get(UpdateViewModel::class.java)
+
         val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("username", "")
 
@@ -37,10 +45,10 @@ class ProfileFragment : Fragment() {
             val firstName = binding.txtFirstName.text.toString()
             val lastName = binding.txtLastName.text.toString()
 
-            if(firstName != "" && lastName != ""){
-                viewModel.updateUser(username.toString(),firstName,lastName)
-            }else{
-                Toast.makeText(requireContext(), "Updated successfully", Toast.LENGTH_SHORT).show()
+            if(firstName.isNotEmpty() && lastName.isNotEmpty()){
+                viewModel.updateUser(username.toString(), firstName, lastName)
+            } else {
+                Toast.makeText(requireContext(), "Some input is empty", Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -48,7 +56,7 @@ class ProfileFragment : Fragment() {
             val password = binding.txtPassword.text.toString()
             val confirmPassword = binding.txtConfPass.text.toString()
             if (password == confirmPassword) {
-                viewModel.updatePass(username.toString(),password)
+                viewModel.updatePass(username.toString(), password)
             } else {
                 Toast.makeText(requireContext(), "Password and confirmation password do not match", Toast.LENGTH_SHORT).show()
             }
@@ -66,6 +74,22 @@ class ProfileFragment : Fragment() {
                 }
                 .show()
         }
-    }
 
+        // Observasi LiveData untuk menanggapi perubahan data
+        viewModel.userSuccessLD.observe(viewLifecycleOwner, Observer { userSuccess ->
+            if (userSuccess) {
+                Toast.makeText(requireContext(), "Updated successfully", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Updated failed", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        viewModel.passSuccessLD.observe(viewLifecycleOwner, Observer { passSuccess ->
+            if (passSuccess) {
+                Toast.makeText(requireContext(), "Password updated successfully", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Password update failed", Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
 }
