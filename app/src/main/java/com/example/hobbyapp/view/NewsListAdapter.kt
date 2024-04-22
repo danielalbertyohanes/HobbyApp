@@ -32,7 +32,7 @@ class NewsListAdapter(val newsList:ArrayList<News>): RecyclerView.Adapter<NewsLi
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         holder.binding.txtTitle.text = newsList[position].title
-        holder.binding.txtAuthor.text = newsList[position].author
+        holder.binding.txtAuthor.text = "@"+newsList[position].author
         holder.binding.txtDeskripsiSingkat.text = newsList[position].deskripsi_singkat
         holder.binding.txtTitle.text = newsList[position].title
 
