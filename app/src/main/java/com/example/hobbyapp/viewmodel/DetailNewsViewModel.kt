@@ -18,7 +18,6 @@ class DetailNewsViewModel (application: Application): AndroidViewModel(applicati
     private var queue: RequestQueue? = null
     fun getNewsDetail(newsId: String) {
         queue = Volley.newRequestQueue(getApplication())
-        //val url = "http://adv.jitusolution.com/news.php?id=$newsId" // Ubah URL sesuai dengan endpoint yang benar
         val url = "http://10.0.2.2/news.php?id=$newsId"
         val stringRequest = StringRequest(
             Request.Method.GET, url,

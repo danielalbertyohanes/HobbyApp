@@ -26,7 +26,7 @@ class ListNewsViewModel(application: Application): AndroidViewModel(application)
         loadingLD.value = true
 
         queue = Volley.newRequestQueue(getApplication())
-        //val url = "http://adv.jitusolution.com/news.php" // Ubah url sesuai dengan endpoint yang benar
+
         val url = "http://10.0.2.2/news.php"
 
         val stringRequest = StringRequest(

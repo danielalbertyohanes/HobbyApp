@@ -47,14 +47,14 @@ class NewsDetailFragment : Fragment() {
         binding.btnNext?.setOnClickListener {
             if (currentPage < totalPages - 1) {
                 currentPage++
-                updatePageContent()
+                updatePage()
             }
         }
 
         binding.btnBack?.setOnClickListener {
             if (currentPage > 0) {
                 currentPage--
-                updatePageContent()
+                updatePage()
             }
         }
     }
@@ -62,13 +62,13 @@ class NewsDetailFragment : Fragment() {
     private fun observeViewModel() {
         viewModel.newsLD.observe(viewLifecycleOwner, Observer { newsData ->
             newsData?.let {
-                totalPages = it.content?.split("\n")?.size ?: 0
-                updatePageContent()
+                totalPages = it.content?.split("\n")?.size!!
+                updatePage()
             }
         })
     }
 
-    private fun updatePageContent() {
+    private fun updatePage() {
         viewModel.newsLD.value?.let { newsData ->
             val contentPages = newsData.content?.split("\n")
             if (currentPage == 0) {
