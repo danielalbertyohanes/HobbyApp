@@ -34,19 +34,21 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inisialisasi viewModel
+
         viewModel = ViewModelProvider(this).get(UpdateViewModel::class.java)
 
         val sharedPreferences = requireContext().getSharedPreferences("user_prefs", Context.MODE_PRIVATE)
         val username = sharedPreferences.getString("username", "")
 
-        // Gunakan binding untuk merujuk ke elemen UI dan mengatur listener
+
         binding.btnUpdateName.setOnClickListener {
             val firstName = binding.txtFirstName.text.toString()
             val lastName = binding.txtLastName.text.toString()
 
             if(firstName.isNotEmpty() && lastName.isNotEmpty()){
                 viewModel.updateUser(username.toString(), firstName, lastName)
+                binding.txtFirstName.setText("")
+                binding.txtLastName.setText("")
             } else {
                 Toast.makeText(requireContext(), "Some input is empty", Toast.LENGTH_SHORT).show()
             }
@@ -57,6 +59,8 @@ class ProfileFragment : Fragment() {
             val confirmPassword = binding.txtConfPass.text.toString()
             if (password == confirmPassword) {
                 viewModel.updatePass(username.toString(), password)
+                binding.txtPassword.setText("")
+                binding.txtConfPass.setText("")
             } else {
                 Toast.makeText(requireContext(), "Password and confirmation password do not match", Toast.LENGTH_SHORT).show()
             }
@@ -75,7 +79,7 @@ class ProfileFragment : Fragment() {
                 .show()
         }
 
-        // Observasi LiveData untuk menanggapi perubahan data
+
         viewModel.userSuccessLD.observe(viewLifecycleOwner, Observer { userSuccess ->
             if (userSuccess) {
                 Toast.makeText(requireContext(), "Updated successfully", Toast.LENGTH_SHORT).show()

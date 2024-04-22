@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
                 binding.bottomNav.visibility = View.VISIBLE
             }
         }
-
     }
 
     override fun onSupportNavigateUp(): Boolean {
